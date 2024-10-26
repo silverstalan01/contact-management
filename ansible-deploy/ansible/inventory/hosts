@@ -1,0 +1,10 @@
+[frontendservers]
+frontend1 ansible_host=35.170.198.159 ansible_user=ubuntu
+
+[backendservers]
+backend1 ansible_host=18.215.187.57 ansible_user=ubuntu
+
+[all:vars]
+ansible_ssh_private_key_file=~/.ssh/contact-management-key.pem
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'

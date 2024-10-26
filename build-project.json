@@ -1,0 +1,20 @@
+{
+    "name": "contact-management-frontend",
+    "source": {
+        "type": "CODEPIPELINE",
+        "buildspec": "buildspec.yml"
+    },
+    "artifacts": {
+        "type": "CODEPIPELINE"
+    },
+    "environment": {
+        "type": "LINUX_CONTAINER",
+        "image": "aws/codebuild/standard:5.0",
+        "computeType": "BUILD_GENERAL1_SMALL",
+        "privilegedMode": true
+    },
+    "serviceRole": "arn:aws:iam::851725490917:role/CodeBuildServiceRole",
+    "cache": {
+        "type": "NO_CACHE"
+    }
+}

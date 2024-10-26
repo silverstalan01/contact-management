@@ -1,0 +1,46 @@
+{
+  "pipeline": {
+    "name": "Pipeline1",
+    "roleArn": "arn:aws:iam::<account-id>:role/service-role/codepipeline-role",
+    "artifactStore": {
+      "type": "S3",
+      "location": "<your-s3-bucket-name>"
+    },
+    "stages": [
+      {
+        "name": "Source",
+        "actions": [{
+          "name": "SourceAction",
+          "actionTypeId": {
+            "category": "Source",
+            "owner": "AWS",
+            "provider": "CodeCommit",
+            "version": "1"
+          },
+          "configuration": {
+            "RepositoryName": "<repository-name>",
+            "BranchName": "main"
+          },
+          "outputArtifacts": [{
+            "name": "SourceOutput"
+          }]
+        }]
+      },
+      {
+        "name": "Build",
+        "actions": [{
+          "name": "BuildAction",
+          "actionTypeId": {
+            "category": "Build",
+            "owner": "AWS",
+            "provider": "CodeBuild",
+            "version": "1"
+          },
+          "inputArtifacts": [{
+            "name": "SourceOutput"
+          }]
+        }]
+      }
+    ]
+  }
+}

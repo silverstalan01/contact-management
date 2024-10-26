@@ -1,0 +1,6 @@
+---
+- name: restart gunicorn
+  systemd:
+    name: gunicorn
+    state: restarted
+    daemon_reload: yes

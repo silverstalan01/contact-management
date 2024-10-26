@@ -1,0 +1,24 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install software-properties-common
+  apt:
+    name: software-properties-common
+    state: present
+
+- name: Install common packages
+  apt:
+    name:
+      - git
+      - curl
+      - nginx
+      - python3
+      - python3-pip
+      - python3-venv
+      - python3-dev
+      - build-essential
+    state: present
+    update_cache: yes

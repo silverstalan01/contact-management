@@ -1,0 +1,30 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "codepipeline:*",
+                "codecommit:CancelUploadArchive",
+                "codecommit:GetBranch",
+                "codecommit:GetCommit",
+                "codecommit:GetUploadArchiveStatus",
+                "codecommit:UploadArchive",
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codedeploy:CreateDeployment",
+                "codedeploy:GetApplication",
+                "codedeploy:GetApplicationRevision",
+                "codedeploy:GetDeployment",
+                "codedeploy:GetDeploymentConfig",
+                "codedeploy:RegisterApplicationRevision",
+                "s3:*",
+                "lambda:InvokeFunction",
+                "lambda:ListFunctions",
+                "cloudwatch:*",
+                "iam:PassRole"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

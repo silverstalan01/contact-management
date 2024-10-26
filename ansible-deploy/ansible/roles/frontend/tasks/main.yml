@@ -1,0 +1,33 @@
+---
+- name: Install Node.js
+  shell: |
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    apt-get install -y nodejs
+
+- name: Create application directory
+  file:
+    path: /var/www/contact-management
+    state: directory
+    mode: '0755'
+
+- name: Clone repository
+  git:
+    repo: "https://github.com/YourUsername/contact-management.git"
+    dest: /var/www/contact-management
+    version: main
+
+- name: Install npm dependencies
+  npm:
+    path: /var/www/contact-management/frontend
+    state: present
+
+- name: Build React application
+  command:
+    cmd: npm run build
+    chdir: /var/www/contact-management/frontend
+
+- name: Configure nginx
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: restart nginx

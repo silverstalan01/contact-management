@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn daemon for Contact Management
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/var/www/contact-management/backend
+Environment="PATH=/var/www/contact-management/backend/venv/bin"
+ExecStart=/var/www/contact-management/backend/venv/bin/gunicorn           --workers 3           --bind 0.0.0.0:8000           config.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
